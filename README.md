@@ -66,3 +66,56 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ {/*
+export default class Content extends Component {
+   constructor(props){
+        super(props)
+        this.state = {
+            RelatedTopics: []
+        }
+    }
+    
+    componentWillMount () {
+        const url = 'https://api.duckduckgo.com/?q=/&{hello}/&format=json&pretty=100';
+        Axios.get(url)
+        .then(res => res.data).then(data => {
+            this.setState ({ RelatedTopics:data.RelatedTopics });
+        })
+    }
+  
+    render() {
+        return (
+            <div className="results">
+                <h1>{this.props.query}</h1>
+            {this.state.RelatedTopics.map(RelatedTopic =>
+                <div className="result" key={RelatedTopic.Text}>
+                    <h3 className="title" onClick={e => console.log(e.target.innerText)}>{RelatedTopic.Text}</h3>
+                    <p className="description">{RelatedTopic.Result}</p>
+                </div>
+            )}
+           
+            </div>
+        )
+    }
+}
+*/}

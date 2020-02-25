@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './scss/styles.scss';
+import Content from './Component/Content';
+import Search from './Component/Search';
+export default class App extends Component {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  constructor(props){
+    super(props);
+    this.state = {
+      query: "",
+
+  }
+  }
+  getResult = (e) => {
+  e.preventDefault();
+  const result = e.target.elements.searchresult.value;
+  document.write(result)
+  }
+
+  handleSearch = (query) => {
+    this.setState({query})
+  }
+
+  render() {
+    return (
+      <>
+         <h1>SEaRCh</h1>
+         <Search handleSearch={this.handleSearch} />
+         <Content /> 
+       
+    </>
+    )
+  }
 }
-
-export default App;

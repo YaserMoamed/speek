@@ -1,0 +1,10 @@
+.result {
+    max-width: 640px;
+    .title {
+        cursor:pointer;
+        color:blue;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
