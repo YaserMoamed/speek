@@ -1,10 +1,53 @@
+$body-font: Ubuntu, sans-serif;
+
+// body {
+//   cursor: url(../images/cursor.svg), auto;
+// }
+
+body {
+  cursor: default;
+}
+
+.results-page {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 2rem;
+  margin-top: 1rem;
+}
+
 .result {
-    max-width: 640px;
-    .title {
-        cursor:pointer;
-        color:blue;
-        &:hover {
-            text-decoration: underline;
-        }
-    }
+  margin-bottom: 2rem;
+}
+
+.text {
+  &:active {
+    border: 2px solid #4939ff;
+  }
+}
+
+.result-image {
+  display: flex;
+  flex-direction: column;
+  img {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+.result-title {
+  font-size: 1.2rem;
+  color: #4939ff;
+  margin: 0;
+}
+
+.result-url {
+  font-size: 0.8rem;
+  display: inline-block;
+  margin: 0.5rem 0;
+  cursor: url() clic;
+}
+
+.result-description {
+  font-size: 1rem;
+  margin: 0.5rem 0;
 }
