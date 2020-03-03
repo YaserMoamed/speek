@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/styles.scss';
 import Content from './Component/Content';
+import Search from './Component/Search';
 import {
   BrowserRouter as Router,
   Switch,
@@ -37,7 +38,7 @@ function Home() {
     <span className="browser-logo">
     <img src="../public/images/speak" />
      </span>
-    <Content />
+    <Search />
     </div>
   )
 }
