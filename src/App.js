@@ -35,9 +35,9 @@ function Home() {
   return (
     <div>
     <span className="browser-logo">
-    <img src="../images/speek-logo.svg" alt="logo"/>
+    <img src="../public/images/speak" />
      </span>
-       <Content />
+    <Content />
     </div>
   )
 }

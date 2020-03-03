@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Speak from "./Speech";
-import '../scss/Content.scss'
-import '../scss/Search.scss'
 
 const Content = () => {
   const [RelatedTopics, setRelatedTopics] = useState([]);
