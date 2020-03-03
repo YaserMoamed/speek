@@ -1,6 +1,4 @@
 import React from 'react';
-import '../scss/Search.scss'
-import React from "react";
 import "../scss/Content.scss";
 
 const Navbar = () => (

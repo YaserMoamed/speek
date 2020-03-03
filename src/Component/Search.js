@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import '../scss/Search.scss'
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Speak from './Speech'
-import Footer from './Footer';
 import '../scss/Search.scss';
 import {BrowserRouter as Router, Link } from "react-router-dom";
 
