@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../scss/Search.scss'
 const Navbar = () => (
   <div cl
   assName="nav-container">

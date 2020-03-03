@@ -23,8 +23,8 @@ const App = () => {
     <div>
     <Router>
     <Switch>
-    <Route exact path="/" component={Home} />
-     <Route path="/results" component={() => <Content fetchResults={fetchResults}/>}/>
+      <Route exact path="/" component={Home} />
+       <Route path="/results/" component={() => <Content  fetchResults={fetchResults}/>}/>
     </Switch>
     </Router>
     </div> 
@@ -36,7 +36,7 @@ function Home() {
   return (
     <div>
     <span className="browser-logo">
-    <img src="../public/images/speak" />
+    <img src="../public/images/speak-logo.svg" />
      </span>
     <Search />
     </div>

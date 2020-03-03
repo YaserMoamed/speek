@@ -96,11 +96,18 @@
       right: 1.5rem;
       top: 1.25rem;
     }
+    .footer {
+      a {
+        text-align: center;
+        color: #f04b50;
+      }
+    }
   }
 }
 
-.footer ,
-    a {
-         text-align: center;
-         color: #f04b50;
-      }
+//.footer ,
+  //  a {
+    //     text-align: center;
+      //   color: #f04b50;
+      //}
+}

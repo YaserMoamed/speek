@@ -1,79 +1,48 @@
-<<<<<<< HEAD
-import React, { Component } from "react";
-import "../scss/Search.scss";
-export default class Search extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      query: "",
-      organicResults: {},
-      loading: false,
-      message: ""
-=======
-import React, { Component } from 'react';
+import React, { useState, useEffect } from "react";
+import '../scss/Search.scss'
 import Navbar from './Navbar';
+import {
+  BrowserRouter as Router,
+  Link
+} from "react-router-dom";
+
+import Speak from './Speech'
 import Footer from './Footer';
+import '../scss/Search.scss';
+const Search = () =>  {
+  const [RelatedTopics, setRelatedTopics] = useState([]);
+  const [query, setQuery] = useState("");
 
-//import '../scss/search.scss';
-export default class Search extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      query: '',
-      organicResults: {},
-      loading: false,
-      message: ''
->>>>>>> dev-danya
-    };
-  }
-  handleOnInputChange = event => {
-    const query = event.target.value;
-    this.setState({ query: query });
-    this.props.handleSearch(query);
+  const fetchResults = query => {
+    if (query !== "") {
+      fetch(`https://api.duckduckgo.com/?q=${query}&format=json`)
+        .then(res => res.json())
+        .then(data => setRelatedTopics(data.RelatedTopics));
+    }
   };
-  render() {
-    const { query } = this.state;
-    console.log(this.state.query);
+
+  const handleClick = e => {
+    const searchQuery = document.getElementById("search");
+    setQuery(searchQuery.value);
+  };
+  //componentDidUpdate with query
+  useEffect(() => fetchResults(query), [query]);
+
     return (
-<<<<<<< HEAD
-      <div className="container">
-        <div className="Search">
-          <div className="input-group">
-            <input
-              className="form-control searchbar"
-              type="text"
-              name="query"
-              value={query}
-              placeholder="Search"
-              aria-label="Search"
-              onChange={this.handleOnInputChange}
-            />
-            <div className="input-group-append">
-              <span className="input-group-text" id="basic-text1">
-                <i className="search-icon" aria-hidden="true">
-                  {" "}
-                </i>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-=======
       <>
         <Navbar />
         <div className="search">
           <div className="container">
             <img className="logo" src="/speek.svg" alt="" />
             <div className="search-container">
-              <i className="fas fa-search"></i>
+            <Link to="/results">
+              <i className="fas fa-search"  onClick={handleClick}></i>
+              </Link>
               <input
                 type="text"
                 className="search-input"
-                value={query}
-                onChange={this.handleOnInputChange}
                 placeholder="Search"
+                id="search"
               />
               <i className="fas fa-microphone"></i>
             </div>
@@ -82,10 +51,19 @@ export default class Search extends Component {
               oltre a leggerli, con un semplice click.
             </p>
           </div>
+          {RelatedTopics.map((result, index) => (
+            <div>
+            <a href={result.FirstURL} className="result-url text" onClick={e => Speak(result.FirstURL)}>
+            <span>{result.FirstURL}</span>
+            </a>
+            <h4 onClick={e => Speak(result.Text)} className="result-title text">{result.Text}</h4>
+            <p className="result-description text" >{result.Text}</p>
+            </div>
+          ))}
         </div>
         <Footer />
       </>
->>>>>>> dev-danya
     );
   }
-}
+
+export default Search;

@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Speak from "./Speech";
-
-const Content = () => {
+import '../scss/Content.scss'
+const Content = ({match}) => {
   const [RelatedTopics, setRelatedTopics] = useState([]);
   const [query, setQuery] = useState("");
+
+  //
+  const {q} = match.params;
+
+
+
 
   const fetchResults = query => {
     if (query !== "") {
@@ -17,8 +23,9 @@ const Content = () => {
     const searchQuery = document.getElementById("search");
     setQuery(searchQuery.value);
   };
+  
   //componentDidUpdate with query
-  useEffect(() => fetchResults(query), [query]);
+  useEffect(() => fetchResults(q), [q]);
 
   return (
     <div className="container">
