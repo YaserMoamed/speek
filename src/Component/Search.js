@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import '../scss/Search.scss'
-import Navbar from './Navbar';
-import {
-  BrowserRouter as Router,
-  Link
-} from "react-router-dom";
-
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 import Speak from './Speech'
 import Footer from './Footer';
 import '../scss/Search.scss';
+import {BrowserRouter as Router, Link } from "react-router-dom";
+
+
+
 const Search = () =>  {
   const [RelatedTopics, setRelatedTopics] = useState([]);
   const [query, setQuery] = useState("");
@@ -24,7 +24,7 @@ const Search = () =>  {
   const handleClick = e => {
     const searchQuery = document.getElementById("search");
     setQuery(searchQuery.value);
-  };
+  }
   //componentDidUpdate with query
   useEffect(() => fetchResults(query), [query]);
 
@@ -65,5 +65,4 @@ const Search = () =>  {
       </>
     );
   }
-
 export default Search;

@@ -1,17 +1,12 @@
-import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './scss/styles.scss';
-import Content from './Component/Content';
-import Search from './Component/Search';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./scss/styles.scss";
+import Content from "./Component/Content";
+import Search from "./Component/Search";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
-
-  const fetchResults = (query,setRelatedTopics) => {
+  const fetchResults = (query, setRelatedTopics) => {
     if (query !== "") {
       fetch(`https://api.duckduckgo.com/?q=${query}&format=json`)
         .then(res => res.json())
@@ -40,6 +35,5 @@ function Home() {
      </span>
     <Search />
     </div>
-  )
+  );
 }
-

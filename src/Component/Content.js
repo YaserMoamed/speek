@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Speak from "./Speech";
 import '../scss/Content.scss'
+import "../scss/Content.scss";
+
 const Content = ({match}) => {
   const [RelatedTopics, setRelatedTopics] = useState([]);
   const [query, setQuery] = useState("");
 
-  //
   const {q} = match.params;
 
 
@@ -29,38 +30,52 @@ const Content = ({match}) => {
 
   return (
     <div className="container">
-      <h1>Search something...</h1>
-      <input
-        id="search"
-        className="form-control my-0 py-2 red-border"
-        type="text"
-        name="query"
-        placeholder="Search"
-        aria-label="Search"
-      />
+      <div className="search-container">
+        <div className="input-container">
+          <input
+            id="search"
+            className="search-input"
+            type="text"
+            name="query"
+            placeholder="Search"
+            aria-label="Search"
+          />
 
-      <button onClick={handleClick}>Search</button>
+          <button className="invisibutton fas fa-search" onClick={handleClick}>
+            {/* <i className="fas fa-search"></i> */}
+          </button>
+        </div>
+      </div>
+
       <div className="container">
-      <div className="results-page">
-      
-      <div className="results">
-      {RelatedTopics.map((hit, index) => (
-        <div>
-        <a href={hit.FirstURL} className="result-url text" onClick={e => Speak(hit.FirstURL)}>
-        <span>{hit.FirstURL}</span>
-        </a>
-        <h4 onClick={e => Speak(hit.Text)} className="result-title text">{hit.Text}</h4>
-        <p className="result-description text" >{hit.Text}</p>
+        <div className="results-page">
+          <div className="results">
+            {RelatedTopics.map((hit, index) => (
+              <div>
+                <a
+                  href={hit.FirstURL}
+                  className="result-url text"
+                  onClick={e => Speak(hit.FirstURL)}
+                >
+                  <span>{hit.FirstURL}</span>
+                </a>
+                <h4
+                  onClick={e => Speak(hit.Text)}
+                  className="result-title text"
+                >
+                  {hit.Text}
+                </h4>
+                <p className="result-description text">{hit.Text}</p>
+              </div>
+              //<QuoteItem key={index} quote={hit.Text} />
+            ))}
+          </div>
+          <div className="result-image">
+            <img src="/images/placeholder-image.png" />
+            <img src="/images/placeholder-image.png" />
+            <img src="/images/placeholder-image.png" />
+          </div>
         </div>
-        //<QuoteItem key={index} quote={hit.Text} />
-        ))}
-        </div>
-        <div className="result-image">
-        <img src="/images/placeholder-image.png" />
-        <img src="/images/placeholder-image.png" />
-        <img src="/images/placeholder-image.png" />
-      </div>
-      </div>
       </div>
     </div>
   );
