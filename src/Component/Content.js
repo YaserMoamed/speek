@@ -1,38 +1,54 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-//import '../scss/result.css'
-class Content extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      organicResults: [],
-      searchResult: ''
-    };
-  }
-  //method
+import React, { useState, useEffect } from "react";
+import Speak from "./TextSpeech/SpeechApi";
+import { Content } from "react-bootstrap/lib/Tab";
 
-  componentDidMount() {
-    axios
-      .get(
-        'https://api.apify.com/v2/datasets/ZRRzkyMtvqKCA76fH/items?format=json&fields=searchQuery,organicResults&unwind=organicResults'
-      )
-      .then(res => res.data)
-      .then(data => this.setState({ organicResults: data }))
-      .catch(error => console.log('catch the error ' + error));
-  }
 
-  render() {
-    return (
-      <div className="result">
-        {this.state.organicResults.map((result, index) => (
-          <div key={index}>
-            <h1>{result.title}</h1>
-            <span> {result.url} </span>
-            <p>{result.description}</p>
+const Content = () => {
+  const [RelatedTopics, setRelatedTopics] = useState([]);
+  const [query, setQuery] = useState("");
+
+  const fetchResults = query => {
+    if (query !== "") {
+      fetch(`https://api.duckduckgo.com/?q=${query}&format=json`)
+        .then(res => res.json())
+        .then(data => setRelatedTopics(data.RelatedTopics));
+    }
+  };
+
+  const handleClick = e => {
+    const searchQuery = document.getElementById("search");
+    setQuery(searchQuery.value);
+  };
+  //componentDidUpdate with query
+  useEffect(() => fetchResults(query), [query]);
+
+  return (
+    <div className="container">
+      <h1>Search something...</h1>
+      <input
+       id="search"
+       className="form-control my-0 py-2 red-border" 
+       type="text" 
+       name="query" 
+       placeholder="Search" 
+      aria-label="Search"	
+      />
+           
+      <button onClick={handleClick}>Search</button>
+      <ul>
+        {RelatedTopics.map((hit, index) => (
+          <div>
+            <h4 onClick={e => Speak(hit.Text)}>{hit.Text}</h4>
+            <a href={hit.FirstURL}>
+              <span>{hit.FirstURL}</span>
+            </a>
+            <p>{hit.Result}</p>
           </div>
+          //<QuoteItem key={index} quote={hit.Text} />
         ))}
-      </div>
-    );
-  }
-}
+      </ul>
+    </div>
+  );
+};
+
 export default Content;
