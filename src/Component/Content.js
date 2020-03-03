@@ -27,13 +27,31 @@ class Content extends Component {
       <div className="container">
         <div className="results-page">
           <div className="results">
-            {this.state.organicResults.map((result, index) => (
-              <div className="result" key={index}>
-                <span className="result-url text"> {result.url} </span>
-                <h1 className="result-title text">{result.title}</h1>
-                <p className="result-description text">{result.description}</p>
-              </div>
-            ))}
+            {this.state.organicResults.map((result, index) => {
+              let resultImage;
+              const itemNumber = index + 1;
+              if (itemNumber % 3 === 0) {
+                resultImage = (
+                  <div className="result-image result-image-row">
+                    <img src="https://lh3.googleusercontent.com/proxy/RcOErbklnx-s0ZKBLDzmYJYFIstOZp6OJGiMIm9JDFnlRLkVXvV-kHFBPqr9C75dlgua8ZhDZ3psYhTzFK2ROMd7Pm8O4Fga8ihusUBu" />
+                    <img src="https://lh3.googleusercontent.com/proxy/RcOErbklnx-s0ZKBLDzmYJYFIstOZp6OJGiMIm9JDFnlRLkVXvV-kHFBPqr9C75dlgua8ZhDZ3psYhTzFK2ROMd7Pm8O4Fga8ihusUBu" />
+                    <img src="https://lh3.googleusercontent.com/proxy/RcOErbklnx-s0ZKBLDzmYJYFIstOZp6OJGiMIm9JDFnlRLkVXvV-kHFBPqr9C75dlgua8ZhDZ3psYhTzFK2ROMd7Pm8O4Fga8ihusUBu" />
+                  </div>
+                );
+              }
+              return (
+                <>
+                  <div className="result" key={index}>
+                    <span className="result-url text"> {result.url} </span>
+                    <h1 className="result-title text">{result.title}</h1>
+                    <p className="result-description text">
+                      {result.description}
+                    </p>
+                  </div>
+                  {resultImage}
+                </>
+              );
+            })}
           </div>
 
           <div className="result-image">
