@@ -22,9 +22,9 @@ export default class Search extends Component {
     return (
       <div className="container">
         <div className="Search">
-          <div className="input-group">
+          <div className="search-input">
             <input
-              className="form-control searchbar"
+              className="searchbar"
               type="text"
               name="query"
               value={query}
@@ -32,12 +32,8 @@ export default class Search extends Component {
               aria-label="Search"
               onChange={this.handleOnInputChange}
             />
-            <div className="input-group-append">
-              <span className="input-group-text" id="basic-text1">
-                <i className="search-icon" aria-hidden="true">
-                  {" "}
-                </i>
-              </span>
+            <div className="search-icon">
+              <i className="icon"> </i>
             </div>
           </div>
         </div>

@@ -24,7 +24,12 @@ export default class App extends Component {
     return (
       <>
         <span className="browser-logo">
-          <img src="../src/images/speek-logo.svg" />
+          <img
+            src="/images/speek-logo.svg"
+            alt="speek logo"
+            width="64"
+            height="100"
+          />
         </span>
         <Search handleSearch={this.handleSearch} />
         <Content />

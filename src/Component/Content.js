@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "../scss/result.scss";
+import "../scss/Content.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 class Content extends Component {
   constructor(props) {
@@ -33,9 +33,9 @@ class Content extends Component {
               if (itemNumber % 3 === 0) {
                 resultImage = (
                   <div className="result-image result-image-row">
-                    <img src="https://lh3.googleusercontent.com/proxy/RcOErbklnx-s0ZKBLDzmYJYFIstOZp6OJGiMIm9JDFnlRLkVXvV-kHFBPqr9C75dlgua8ZhDZ3psYhTzFK2ROMd7Pm8O4Fga8ihusUBu" />
-                    <img src="https://lh3.googleusercontent.com/proxy/RcOErbklnx-s0ZKBLDzmYJYFIstOZp6OJGiMIm9JDFnlRLkVXvV-kHFBPqr9C75dlgua8ZhDZ3psYhTzFK2ROMd7Pm8O4Fga8ihusUBu" />
-                    <img src="https://lh3.googleusercontent.com/proxy/RcOErbklnx-s0ZKBLDzmYJYFIstOZp6OJGiMIm9JDFnlRLkVXvV-kHFBPqr9C75dlgua8ZhDZ3psYhTzFK2ROMd7Pm8O4Fga8ihusUBu" />
+                    <img src="/images/placeholder-image.png" />
+                    <img src="/images/placeholder-image.png" />
+                    <img src="/images/placeholder-image.png" />
                   </div>
                 );
               }
@@ -55,9 +55,9 @@ class Content extends Component {
           </div>
 
           <div className="result-image">
-            <img src="https://lh3.googleusercontent.com/proxy/RcOErbklnx-s0ZKBLDzmYJYFIstOZp6OJGiMIm9JDFnlRLkVXvV-kHFBPqr9C75dlgua8ZhDZ3psYhTzFK2ROMd7Pm8O4Fga8ihusUBu" />
-            <img src="https://lh3.googleusercontent.com/proxy/RcOErbklnx-s0ZKBLDzmYJYFIstOZp6OJGiMIm9JDFnlRLkVXvV-kHFBPqr9C75dlgua8ZhDZ3psYhTzFK2ROMd7Pm8O4Fga8ihusUBu" />
-            <img src="https://lh3.googleusercontent.com/proxy/RcOErbklnx-s0ZKBLDzmYJYFIstOZp6OJGiMIm9JDFnlRLkVXvV-kHFBPqr9C75dlgua8ZhDZ3psYhTzFK2ROMd7Pm8O4Fga8ihusUBu" />
+            <img src="/images/placeholder-image.png" />
+            <img src="/images/placeholder-image.png" />
+            <img src="/images/placeholder-image.png" />
           </div>
         </div>
       </div>
