@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Speech from "./Speech";
-import "./styles.css";
 import Speak from "./Speech";
-
+import '../scss/result.scss'
 const App = () => {
   const [RelatedTopics, setRelatedTopics] = useState([]);
   const [query, setQuery] = useState("");
+
   const fetchResults = query => {
     if (query !== "") {
       fetch(`https://api.duckduckgo.com/?q=${query}&format=json`)
@@ -13,25 +12,35 @@ const App = () => {
         .then(data => setRelatedTopics(data.RelatedTopics));
     }
   };
+
   const handleClick = e => {
-    setQuery(e.target.value);
+    const searchQuery = document.getElementById("search");
+    setQuery(searchQuery.value);
   };
-  //componentDidMount
+  //componentDidUpdate with query
   useEffect(() => fetchResults(query), [query]);
 
   return (
-    <div className="Search">
+    <div className="container">
       <h1>Search something...</h1>
-      <input className="box" type="text" placeholder="Enter text...." />
-      <button onClick={e => handleClick()}>Search</button>
+      <input
+        id="search"
+        className="form-control my-0 py-2 red-border"
+        type="text"
+        name="query"
+        placeholder="Search"
+        aria-label="Search"
+      />
+
+      <button onClick={handleClick}>Search</button>
       <ul>
         {RelatedTopics.map((hit, index) => (
           <div>
-            <h4 onClick={e => Speak(hit.Text)}>{hit.Text}</h4>
-            <a href={hit.FirstURL}>
+            <a href={hit.FirstURL} onClick={e => Speak(hit.FirstURL)}>
               <span>{hit.FirstURL}</span>
             </a>
-            <p>{hit.Result}</p>
+            <h4 onClick={e => Speak(hit.Text)}>{hit.Text}</h4>
+            <p>{hit.Text}</p>
           </div>
           //<QuoteItem key={index} quote={hit.Text} />
         ))}
