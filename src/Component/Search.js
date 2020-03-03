@@ -1,7 +1,8 @@
-<<<<<<< HEAD
 import React, { Component } from "react";
-import "../scss/Search.scss";
-export default class Search extends Component {
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+
+class Search extends Component {
   constructor(props) {
     super(props);
 
@@ -10,22 +11,6 @@ export default class Search extends Component {
       organicResults: {},
       loading: false,
       message: ""
-=======
-import React, { Component } from 'react';
-import Navbar from './Navbar';
-import Footer from './Footer';
-
-//import '../scss/search.scss';
-export default class Search extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      query: '',
-      organicResults: {},
-      loading: false,
-      message: ''
->>>>>>> dev-danya
     };
   }
   handleOnInputChange = event => {
@@ -37,30 +22,6 @@ export default class Search extends Component {
     const { query } = this.state;
     console.log(this.state.query);
     return (
-<<<<<<< HEAD
-      <div className="container">
-        <div className="Search">
-          <div className="input-group">
-            <input
-              className="form-control searchbar"
-              type="text"
-              name="query"
-              value={query}
-              placeholder="Search"
-              aria-label="Search"
-              onChange={this.handleOnInputChange}
-            />
-            <div className="input-group-append">
-              <span className="input-group-text" id="basic-text1">
-                <i className="search-icon" aria-hidden="true">
-                  {" "}
-                </i>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-=======
       <>
         <Navbar />
         <div className="search">
@@ -85,7 +46,7 @@ export default class Search extends Component {
         </div>
         <Footer />
       </>
->>>>>>> dev-danya
     );
   }
 }
+export default Search;
