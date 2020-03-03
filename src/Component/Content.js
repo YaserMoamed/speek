@@ -1,24 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Speak from "./Speech";
 import '../scss/result.scss'
-const App = () => {
+
+const Content = ({fetchResults}) => {
   const [RelatedTopics, setRelatedTopics] = useState([]);
   const [query, setQuery] = useState("");
 
-  const fetchResults = query => {
-    if (query !== "") {
-      fetch(`https://api.duckduckgo.com/?q=${query}&format=json`)
-        .then(res => res.json())
-        .then(data => setRelatedTopics(data.RelatedTopics));
-    }
-  };
-
+  
   const handleClick = e => {
     const searchQuery = document.getElementById("search");
     setQuery(searchQuery.value);
+    fetchResults(query,setRelatedTopics)
   };
   //componentDidUpdate with query
-  useEffect(() => fetchResults(query), [query]);
+  //useEffect(() => fetchResults(query,setRelatedTopics), [query]);
 
   return (
     <div className="container">
@@ -49,4 +44,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Content;
