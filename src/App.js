@@ -7,6 +7,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import Search from './Component/Search';
 
 const App = () => {
 
