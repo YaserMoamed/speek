@@ -37,7 +37,7 @@ function Home() {
     <span className="browser-logo">
     <img src="../images/speek-logo.svg" alt="logo"/>
      </span>
-    <Content />
+       <Content />
     </div>
   )
 }
