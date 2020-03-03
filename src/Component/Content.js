@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Speak from "./Speech";
-import '../scss/result.scss'
+import "../scss/Content.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Content = ({fetchResults}) => {
   const [RelatedTopics, setRelatedTopics] = useState([]);
@@ -16,32 +17,45 @@ const Content = ({fetchResults}) => {
   //useEffect(() => fetchResults(query,setRelatedTopics), [query]);
 
   return (
+    
     <div className="container">
-      <h1>Search something...</h1>
-      <input
-        id="search"
-        className="form-control my-0 py-2 red-border"
-        type="text"
-        name="query"
-        placeholder="Search"
-        aria-label="Search"
-      />
+    <div className="results-page">
+      <div className="results">
+        {RelatedTopics.map((result, index) => {
+          let resultImage;
+          const itemNumber = index + 1;
+          if (itemNumber % 3 === 0) {
+            resultImage = (
+              <div className="result-image result-image-row">
+                <img src="/images/placeholder-image.png" />
+                <img src="/images/placeholder-image.png" />
+                <img src="/images/placeholder-image.png" />
+              </div>
+            );
+          }
+          return (
+            <>
+              <div className="result" key={index}>
+                <span className="result-url text"> {result.url} </span>
+                <h1 className="result-title text" onClick={e => Speak(result.Text)}>{result.Text}</h1>
+                <p className="result-description text" onClick={e => Speak(result.Text)}>
+                  {result.Text}
+                </p>
+              </div>
+              {resultImage}
+            </>
+          );
+        })}
+      </div>
 
-      <button onClick={handleClick}>Search</button>
-      <ul>
-        {RelatedTopics.map((hit, index) => (
-          <div>
-            <a href={hit.FirstURL} onClick={e => Speak(hit.FirstURL)}>
-              <span>{hit.FirstURL}</span>
-            </a>
-            <h4 onClick={e => Speak(hit.Text)}>{hit.Text}</h4>
-            <p>{hit.Text}</p>
-          </div>
-          //<QuoteItem key={index} quote={hit.Text} />
-        ))}
-      </ul>
+      <div className="result-image">
+        <img src="/images/placeholder-image.png" />
+        <img src="/images/placeholder-image.png" />
+        <img src="/images/placeholder-image.png" />
+      </div>
     </div>
+  </div>
+    
   );
 };
-
 export default Content;
