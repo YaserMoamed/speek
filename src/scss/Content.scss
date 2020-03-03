@@ -8,51 +8,180 @@ body {
   cursor: default;
 }
 
+//RESULTS
 .results-page {
   display: grid;
   grid-template-columns: 2fr 1fr;
   column-gap: 2rem;
   margin-top: 1rem;
-}
 
-.result {
-  margin-bottom: 2rem;
-}
+  .result {
+    margin-bottom: 2rem;
 
-.text {
-  &:active {
-    border: 2px solid #4939ff;
+    .result-title {
+      font-size: 1.2rem;
+      color: #4939ff;
+      margin: 0;
+    }
+
+    .result-url {
+      font-size: 0.8rem;
+      display: inline-block;
+      margin: 0.5rem 0;
+      cursor: url() clic;
+    }
+
+    .result-description {
+      font-size: 1rem;
+      margin: 0.5rem 0;
+    }
+
+    .text {
+      &:active {
+        border: 2px solid #4939ff;
+      }
+    }
+  }
+  .result-image {
+    display: flex;
+    flex-direction: column;
+    &.result-image-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 1rem;
+    }
+    img {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
   }
 }
 
-.result-image {
-  display: flex;
-  flex-direction: column;
-  &.result-image-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 1rem;
+//SEARCHBAR
+
+.search-container {
+  position: relative;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 5rem;
+
+  .input-container {
+    position: relative;
+    display: flex;
+    margin: 1rem 0 2rem 0;
   }
-  img {
+
+  .search-input {
     width: 100%;
-    margin-bottom: 1rem;
+    height: 4rem;
+    font-size: 1.5em;
+    border-radius: 3rem;
+    border: 3px solid #f04b50;
+    outline: none;
+    padding: 0 4rem;
+
+    &:focus {
+      border-color: darken(#f04b50, 20);
+    }
+  }
+
+  //solo in results
+  .invisibutton {
+    position: absolute;
+    align-self: center;
+    right: 0.5rem;
+    background-color: transparent;
+    border: none;
   }
 }
 
-.result-title {
-  font-size: 1.2rem;
-  color: #4939ff;
-  margin: 0;
+//NAVBAR HOME (immagini)
+.nav-container {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  top: 2rem;
+  right: 3rem;
+
+  .fa-camera-retro {
+    padding-right: 3rem;
+    font-size: 5rem;
+  }
+
+  .navbar-description {
+    padding-right: 1rem;
+    font-size: 5rem;
+  }
 }
 
-.result-url {
-  font-size: 0.8rem;
-  display: inline-block;
-  margin: 0.5rem 0;
-  cursor: url() clic;
+//SEARCH HOME
+
+.search {
+  display: flex;
+  min-height: 700px;
+  justify-content: center;
+  align-items: center;
+  .logo {
+    position: relative;
+    display: block;
+    margin: 0 auto 5rem auto;
+  }
+  .page-description {
+    text-align: center;
+    margin: 3rem 0;
+    font-size: 1.15rem;
+  }
+
+  .search-container {
+    position: relative;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 5rem;
+
+    // @include media-breakpoint-down(sm){
+    //   & {
+    //     margin:0
+    //   }
+    // }
+    .search-input {
+      width: 100%;
+      height: 4rem;
+      font-size: 1.5em;
+      border-radius: 3rem;
+      border: 3px solid #f04b50;
+      outline: none;
+      padding: 0 4rem;
+
+      &:focus {
+        border-color: darken(#f04b50, 20);
+      }
+    }
+
+    .fa-search,
+    .fa-microphone {
+      font-size: 1.5rem;
+      position: absolute;
+    }
+
+    .fa-search {
+      top: 1.25rem;
+      left: 1.5rem;
+    }
+
+    .fa-microphone {
+      right: 1.5rem;
+      top: 1.25rem;
+    }
+  }
 }
 
-.result-description {
-  font-size: 1rem;
-  margin: 0.5rem 0;
+//FOOTER
+.footer {
+  text-align: center;
+  margin: 0 auto;
+
+  a {
+    color: #f04b50;
+    text-decoration: none;
+  }
 }

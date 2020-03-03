@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Speak from "./Speech";
+import "../scss/Content.scss";
 
 const Content = () => {
   const [RelatedTopics, setRelatedTopics] = useState([]);
@@ -22,17 +23,23 @@ const Content = () => {
 
   return (
     <div className="container">
-      <h1>Search something...</h1>
-      <input
-        id="search"
-        className="form-control my-0 py-2 red-border"
-        type="text"
-        name="query"
-        placeholder="Search"
-        aria-label="Search"
-      />
+      <div className="search-container">
+        <div className="input-container">
+          <input
+            id="search"
+            className="search-input"
+            type="text"
+            name="query"
+            placeholder="Search"
+            aria-label="Search"
+          />
 
-      <button onClick={handleClick}>Search</button>
+          <button className="invisibutton fas fa-search" onClick={handleClick}>
+            {/* <i className="fas fa-search"></i> */}
+          </button>
+        </div>
+      </div>
+
       <div className="container">
         <div className="results-page">
           <div className="results">
