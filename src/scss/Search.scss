@@ -37,4 +37,85 @@
   position: absolute;
   top: 2rem;
   left: 2rem;
+  width: 50px;
+.nav-container {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 2rem;
+
+  .fa-camera-retro {
+    padding-right: 3rem;
+    font-size: 1.5rem;
+  }
+
+  .navbar-description {
+    padding-right: 1rem;
+    font-size: 1.25rem;
+  }
 }
+
+.search {
+  display: flex;
+  min-height: 400px;
+  justify-content: center;
+  align-items: center;
+  .logo {
+    position: relative;
+    display: block;
+    margin: 5rem auto 1.5rem auto;
+  }
+  .page-description {
+    text-align: center;
+    margin: 3rem 0;
+    font-size: 1.15rem;
+  }
+
+  .search-container {
+    position: relative;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 5rem;
+
+    // @include media-breakpoint-down(sm){
+    //   & {
+    //     margin:0
+    //   }
+    // }
+    .search-input {
+      width: 100%;
+      height: 4rem;
+      font-size: 1.5em;
+      border-radius: 3rem;
+      border: 3px solid #f04b50;
+      outline: none;
+      padding: 0 4rem;
+
+      &:focus {
+        border-color: darken(#f04b50, 20);
+      }
+    }
+
+    .fa-search,
+    .fa-microphone {
+      font-size: 1.5rem;
+      position: absolute;
+    }
+
+    .fa-search {
+      top: 1.25rem;
+      left: 1.5rem;
+    }
+
+    .fa-microphone {
+      right: 1.5rem;
+      top: 1.25rem;
+    }
+  }
+}
+
+.footer ,
+    a {
+         text-align: center;
+         color: #f04b50;
+      }

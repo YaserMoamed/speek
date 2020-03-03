@@ -1,59 +1,61 @@
-import React, { Component } from "react";
-import axios from "axios";
-import "../scss/Content.scss";
-import "bootstrap/dist/css/bootstrap.min.css";
-class Content extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      organicResults: [],
-      searchResult: ""
-    };
-  }
-  //method
+import React, { useState, useEffect } from "react";
+import Speak from "./Speech";
 
-  componentDidMount() {
-    axios
-      .get(
-        "https://api.apify.com/v2/datasets/ZRRzkyMtvqKCA76fH/items?format=json&fields=searchQuery,organicResults&unwind=organicResults"
-      )
-      .then(res => res.data)
-      .then(data => this.setState({ organicResults: data.slice(0, 10) }))
-      .catch(error => console.log("catch the error " + error));
-  }
+const Content = () => {
+  const [RelatedTopics, setRelatedTopics] = useState([]);
+  const [query, setQuery] = useState("");
 
-  render() {
-    return (
+  const fetchResults = query => {
+    if (query !== "") {
+      fetch(`https://api.duckduckgo.com/?q=${query}&format=json`)
+        .then(res => res.json())
+        .then(data => setRelatedTopics(data.RelatedTopics));
+    }
+  };
+
+  const handleClick = e => {
+    const searchQuery = document.getElementById("search");
+    setQuery(searchQuery.value);
+  };
+  //componentDidUpdate with query
+  useEffect(() => fetchResults(query), [query]);
+
+  return (
+    <div className="container">
+      <h1>Search something...</h1>
+      <input
+        id="search"
+        className="form-control my-0 py-2 red-border"
+        type="text"
+        name="query"
+        placeholder="Search"
+        aria-label="Search"
+      />
+
+      <button onClick={handleClick}>Search</button>
       <div className="container">
         <div className="results-page">
           <div className="results">
-            {this.state.organicResults.map((result, index) => {
-              let resultImage;
-              const itemNumber = index + 1;
-              if (itemNumber % 3 === 0) {
-                resultImage = (
-                  <div className="result-image result-image-row">
-                    <img src="/images/placeholder-image.png" />
-                    <img src="/images/placeholder-image.png" />
-                    <img src="/images/placeholder-image.png" />
-                  </div>
-                );
-              }
-              return (
-                <>
-                  <div className="result" key={index}>
-                    <span className="result-url text"> {result.url} </span>
-                    <h1 className="result-title text">{result.title}</h1>
-                    <p className="result-description text">
-                      {result.description}
-                    </p>
-                  </div>
-                  {resultImage}
-                </>
-              );
-            })}
+            {RelatedTopics.map((hit, index) => (
+              <div>
+                <a
+                  href={hit.FirstURL}
+                  className="result-url text"
+                  onClick={e => Speak(hit.FirstURL)}
+                >
+                  <span>{hit.FirstURL}</span>
+                </a>
+                <h4
+                  onClick={e => Speak(hit.Text)}
+                  className="result-title text"
+                >
+                  {hit.Text}
+                </h4>
+                <p className="result-description text">{hit.Text}</p>
+              </div>
+              //<QuoteItem key={index} quote={hit.Text} />
+            ))}
           </div>
-
           <div className="result-image">
             <img src="/images/placeholder-image.png" />
             <img src="/images/placeholder-image.png" />
@@ -61,7 +63,8 @@ class Content extends Component {
           </div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
 export default Content;

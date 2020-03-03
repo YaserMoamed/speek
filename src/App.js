@@ -3,37 +3,40 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./scss/styles.scss";
 import Content from "./Component/Content";
 import Search from "./Component/Search";
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      query: ""
-    };
-  }
-  getResult = e => {
-    e.preventDefault();
-    const result = e.target.elements.searchresult.value;
-    document.write(result);
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+const App = () => {
+  const fetchResults = (query, setRelatedTopics) => {
+    if (query !== "") {
+      fetch(`https://api.duckduckgo.com/?q=${query}&format=json`)
+        .then(res => res.json())
+        .then(data => setRelatedTopics(data.RelatedTopics));
+    }
   };
 
-  handleSearch = query => {
-    this.setState({ query });
-  };
-
-  render() {
-    return (
-      <>
-        <span className="browser-logo">
-          <img
-            src="/images/speek-logo.svg"
-            alt="speek logo"
-            width="64"
-            height="100"
+  return (
+    <div>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route
+            path="/results"
+            component={() => <Content fetchResults={fetchResults} />}
           />
-        </span>
-        <Search handleSearch={this.handleSearch} />
-        <Content />
-      </>
-    );
-  }
+        </Switch>
+      </Router>
+    </div>
+  );
+};
+export default App;
+
+function Home() {
+  return (
+    <div>
+      <span className="browser-logo">
+        <img src="../public/images/speak" />
+      </span>
+      <Search />
+    </div>
+  );
 }
