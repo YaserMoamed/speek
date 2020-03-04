@@ -53,7 +53,6 @@ const Content = ({ query }) => {
           <div className="result-image">
             <img src="/images/placeholder-image.png" />
             <img src="/images/placeholder-image.png" />
-            <img src="/images/placeholder-image.png" />
           </div>
         </div>
       )}
