@@ -8,26 +8,39 @@ const Search = ({ query, setQuery }) => {
 
   return (
     <>
-      <div className="search">
-        <div className="container">
-          <img className="logo" src="/speek.svg" alt="" />
-          <form className="search-container">
-            <input
-              type="text"
-              className="search-input"
-              placeholder="Search"
-              id="search"
-              value={query}
-              onChange={handleChange}
+      <div className={`search ${query !== "" && "after-query"}`}>
+        <div className="search after-query">
+          <div className="container">
+            <img
+              className={`logo ${query !== "" && "after-query"}`}
+              src="/speek.svg"
+              alt=""
             />
-            <i className="fas fa-search" />
-          </form>
-          {query === "" && (
-            <p className="page-description">
-              Speek è il motore di ricerca che ti permette di ascoltare i testi
-              oltre a leggerli, con un semplice click.
-            </p>
-          )}
+            <img
+              className={`min-logo ${query !== "" && "after-query"}`}
+              src="/speek-logo.svg"
+              alt=""
+            />
+            <form
+              className={`search-container ${query !== "" && "after-query"}`}
+            >
+              <input
+                type="text"
+                className="search-input"
+                placeholder="Search"
+                id="search"
+                value={query}
+                onChange={handleChange}
+              />
+              <i className="fas fa-search" />
+            </form>
+            {query === "" && (
+              <p className="page-description">
+                Speek è il motore di ricerca che ti permette di ascoltare i
+                testi oltre a leggerli, con un semplice click.
+              </p>
+            )}
+          </div>
         </div>
       </div>
       {query === "" && <Footer />}

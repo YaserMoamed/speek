@@ -25,6 +25,8 @@ body {
       font-size: 0.8rem;
       display: inline-block;
       margin: 0.5rem 0;
+      color: black;
+      font-weight: semi-bold;
     }
 
     .result-description {
@@ -54,14 +56,13 @@ body {
   }
 }
 
-//SEARCHBAR
 
+//SEARCHBAR
 .search-container {
- position: relative;
+  position: relative;
   max-width: 600px;
   margin: auto;
   margin-top: 5rem;
-  
 
   .input-container {
     position: relative;
@@ -79,7 +80,7 @@ body {
     padding: 0 4rem;
 
     &:focus {
-      border-color: darken(#f04b50, 20);
+      border-color: lighten(#f04b50, 20);
     }
   }
 
@@ -92,6 +93,7 @@ body {
     border: none;
   }
 }
+
 
 //NAVBAR HOME (immagini)
 .nav-container {
@@ -112,7 +114,13 @@ body {
   }
 }
 
+
 //SEARCH HOME
+
+.search.after-query{
+  min-height:0;
+  width: 100%;
+}
 
 .search {
   display: flex;
@@ -124,10 +132,32 @@ body {
     display: block;
     margin: 0 auto 5rem auto;
   }
+
+  .min-logo{
+    display: none;
+  }
+
   .page-description {
     text-align: center;
     margin: 3rem 0;
     font-size: 1.15rem;
+  }
+
+  .search-container.after-query{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .logo.after-query{
+    display: none;
+  }
+
+  .min-logo.after-query{
+    display: block;
+    position: absolute;
+    top: 2rem;
+    left: 4rem;
+    width: 40px;
   }
 
   .search-container {

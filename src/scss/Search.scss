@@ -40,9 +40,26 @@
   }
 }
 
+.megacontainer{
+  display: flex;
+
+justify-content: center;
+
+align-items: center;
+
+flex-direction: column;
+
+height: 95vh;
+}
+
+.search.after-query{
+  min-height:0;
+}
+
 .search {
   display: flex;
   min-height: 400px;
+  // height: 90vh;
   justify-content: center;
   align-items: center;
   .logo {
@@ -56,6 +73,16 @@
     margin: 3rem 0;
     font-size: 1.15rem;
   }
+
+  .search-container.after-query{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .logo.after-query{
+    display: none;
+  }
+
 
   .search-container {
     position: relative;

@@ -12,6 +12,7 @@ const Content = ({ query }) => {
         .then(data => setRelatedTopics(data.RelatedTopics));
     }
   };
+
   //componentDidUpdate with query
   useEffect(() => fetchResults(query), [query]);
 
@@ -51,6 +52,7 @@ const Content = ({ query }) => {
             ))}
           </div>
           <div className="result-image">
+            <img src="/images/placeholder-image.png" />
             <img src="/images/placeholder-image.png" />
             <img src="/images/placeholder-image.png" />
           </div>
