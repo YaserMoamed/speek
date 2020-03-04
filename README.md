@@ -2,5 +2,5 @@
 
 * It is simple app using ReactJs && SpeechSynthesis web api
 
-
-##### dev-yaser
+Created By
+##dev-danya ##dev-marta ## dev-yaser
