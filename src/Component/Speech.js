@@ -1,6 +1,6 @@
 const Speak = text => {
     const speech = new SpeechSynthesisUtterance();
-    speech.lang = "it";
+    speech.lang = "en";
     speech.text = text;
     speechSynthesis.speak(speech);
   };
