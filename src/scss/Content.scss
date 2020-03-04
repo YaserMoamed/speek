@@ -1,12 +1,9 @@
 $body-font: Ubuntu, sans-serif;
 
-// body {
-//   cursor: url(../images/cursor.svg), auto;
-// }
-
 body {
-  cursor: default;
+  //cursor: url(/images/cursor.svg), auto;
 }
+
 
 //RESULTS
 .results-page {
@@ -15,7 +12,7 @@ body {
   column-gap: 2rem;
   margin-top: 1rem;
 
-  .result {
+  .results {
     margin-bottom: 2rem;
 
     .result-title {
@@ -28,7 +25,6 @@ body {
       font-size: 0.8rem;
       display: inline-block;
       margin: 0.5rem 0;
-      cursor: url() clic;
     }
 
     .result-description {
@@ -37,9 +33,10 @@ body {
     }
 
     .text {
-      &:active {
-        border: 2px solid #4939ff;
-      }
+      cursor: pointer;
+     &:hover {
+       box-shadow:0 0 0 3px #4939ff;
+     }
     }
   }
   .result-image {

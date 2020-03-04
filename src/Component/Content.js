@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Speak from "./Speech";
-import '../scss/Content.scss'
-import "../scss/Content.scss";
 
-const Content = ({match}) => {
-  const [RelatedTopics, setRelatedTopics] = useState([]);
-  const [query, setQuery] = useState("");
-
-  const {q} = match.params;
-
-
-
+const Content = ({ query }) => {
+  const [relatedTopics, setRelatedTopics] = useState([]);
+  const [time, setTime] = useState(Date.now());
 
   const fetchResults = query => {
     if (query !== "") {
@@ -19,53 +12,40 @@ const Content = ({match}) => {
         .then(data => setRelatedTopics(data.RelatedTopics));
     }
   };
-
-  const handleClick = e => {
-    const searchQuery = document.getElementById("search");
-    setQuery(searchQuery.value);
-  };
-  
   //componentDidUpdate with query
-  useEffect(() => fetchResults(q), [q]);
+  useEffect(() => fetchResults(query), [query]);
+
+  const handleClick = text => {
+    Speak(text);
+  };
 
   return (
     <div className="container">
-      <div className="search-container">
-        <div className="input-container">
-          <input
-            id="search"
-            className="search-input"
-            type="text"
-            name="query"
-            placeholder="Search"
-            aria-label="Search"
-          />
-
-          <button className="invisibutton fas fa-search" onClick={handleClick}>
-            {/* <i className="fas fa-search"></i> */}
-          </button>
-        </div>
-      </div>
-
-      <div className="container">
+      {query !== "" && (
         <div className="results-page">
           <div className="results">
-            {RelatedTopics.map((hit, index) => (
-              <div>
+            {relatedTopics.map((hit, index) => (
+              <div key={index}>
                 <a
                   href={hit.FirstURL}
-                  className="result-url text"
-                  onClick={e => Speak(hit.FirstURL)}
+                  className="result-url"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <span>{hit.FirstURL}</span>
                 </a>
                 <h4
-                  onClick={e => Speak(hit.Text)}
+                  onClick={() => handleClick(hit.Text)}
                   className="result-title text"
                 >
                   {hit.Text}
                 </h4>
-                <p className="result-description text">{hit.Text}</p>
+                <p
+                  className="result-description text"
+                  onClick={() => handleClick(hit.Text)}
+                >
+                  {hit.Text}
+                </p>
               </div>
               //<QuoteItem key={index} quote={hit.Text} />
             ))}
@@ -76,7 +56,7 @@ const Content = ({match}) => {
             <img src="/images/placeholder-image.png" />
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
