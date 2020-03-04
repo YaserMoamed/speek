@@ -3,4 +3,6 @@
 * It is simple app using ReactJs && SpeechSynthesis web api
 
 Created By
-##dev-danya ##dev-marta ## dev-yaser
+## dev-danya 
+## dev-marta 
+## dev-yaser
