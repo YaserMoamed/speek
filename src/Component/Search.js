@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Speak from './Speech'
-import '../scss/Search.scss';
+import '../scss/Content.scss';
 import {BrowserRouter as Router, Link } from "react-router-dom";
 
 
@@ -33,17 +33,15 @@ const Search = () =>  {
           <div className="container">
             <img className="logo" src="/speek.svg" alt="" />
             <div className="search-container">
-            <Link to="/results">
-              <i className="fas fa-search"  onClick={handleClick}></i>
-              </Link>
               <input
                 type="text"
                 className="search-input"
                 placeholder="Search"
                 id="search"
               />
-              <i className="fas fa-microphone"></i>
-            </div>
+              <Link to="/results">
+              <i className="fas fa-search"  onClick={handleClick}></i>
+              </Link>            </div>
             <p className="page-description">
               Speek è il motore di ricerca che ti permette di ascoltare i testi
               oltre a leggerli, con un semplice click.
