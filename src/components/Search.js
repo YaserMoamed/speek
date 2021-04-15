@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "./Footer";
-
-const Search = ({ query, setQuery }) => {
+import '../assets/scss/Search.scss'
+const Search = () => {
+  const [ query, setQuery] = useState('');
   const handleChange = e => {
     setQuery(e.target.value);
   };

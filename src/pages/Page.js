@@ -1,6 +1,6 @@
 import React from 'react';
-import Content from './Content';
-import Search from './Search';
+import Content from '../components/container/Content';
+import Search from '../components/Search';
 
 export default class Page extends React.Component {
   constructor(props) {

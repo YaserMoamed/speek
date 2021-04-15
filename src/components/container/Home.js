@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import Search from "./Search";
-import Content from "./Content";
+import Search from "../Search";
+import Content from "../container/Content";
 
 const Home = () => {
   const [query, setQuery] = useState("");

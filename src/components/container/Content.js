@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Speak from "./Speech";
+import Speak from "../Speech";
 
 const Content = ({ query }) => {
   const [relatedTopics, setRelatedTopics] = useState([]);
-  const [time, setTime] = useState(Date.now());
 
   const fetchResults = query => {
     if (query !== "") {
@@ -52,9 +51,9 @@ const Content = ({ query }) => {
             ))}
           </div>
           <div className="result-image">
-            <img src="/images/placeholder-image.png" />
-            <img src="/images/placeholder-image.png" />
-            <img src="/images/placeholder-image.png" />
+            <img src="/images/placeholder-image.png" alt="first-ads" />
+            <img src="/images/placeholder-image.png" alt="first-ads"  />
+            <img src="/images/placeholder-image.png" alt="first-ads"  />
           </div>
         </div>
       )}
